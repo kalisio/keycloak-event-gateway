@@ -20,20 +20,9 @@ describe('integration_tests', () => {
 	it('browses Keycloak config', (done) => {
 		
 		driver		
-			.navigate().to('http://localhost:8080/')
+			.navigate().to('http://localhost:8080/admin/master/console/')
 			.then(() => driver.sleep(3000))
-			.then(() => driver.takeScreenshot())
-			.then((data) => {
-				if (!fs.existsSync('screenshots')) {
-					fs.mkdirSync('screenshots');
-				}
-				fs.writeFileSync('screenshots/out.png', data, 'base64', (error) => {
-					if (error) {
-						console.log(error);
-						assert.fail('While taking screenshot');
-					}
-				})
-			})
+			.then(() => customTakeScreenshot(driver))
 			.then(() => done())
 			.catch((error) => {
 				console.log(error);
@@ -56,4 +45,25 @@ describe('integration_tests', () => {
 	});
 
 });
+
+var screenshotCount = 0;
+
+const customTakeScreenshot = (driver) => {
+
+	return driver
+		.takeScreenshot()
+		.then((data) => {
+			if (!fs.existsSync('screenshots')) {
+				fs.mkdirSync('screenshots');
+			}
+			++screenshotCount;
+			const fileName = screenshotCount.toString().padStart(8, '0') + '.png';
+			fs.writeFileSync('screenshots/' + fileName, data, 'base64', (error) => {
+				if (error) {
+					console.log(error);
+					assert.fail('While taking screenshot: ' + fileName);
+				}
+			})
+		});
+};
 
