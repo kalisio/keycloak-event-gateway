@@ -16,6 +16,13 @@ const driver = new webdriver.Builder()
 	.withCapabilities(webdriver.Capabilities.firefox()) // Uses RemoteWebDriver
 	.build();
 
+const ready = () => Promise.resolve();
+
+const intent = (message) => new Promise((resolve, project) => {
+	console.log('    intent: ' + message);
+	resolve();
+});
+
 var screenshotCount = 0;
 
 const takeScreenshotAndIncreaseCounter = () => {
@@ -41,65 +48,65 @@ describe('integration_tests', () => {
 
 	it('browses Keycloak config', (done) => {
 		
-		driver
+		ready()
 		
-		// Login page
-			.navigate().to('http://localhost:8080/admin/master/console/')
+		.then(() => intent('Login page'))
+			.then(() => driver.navigate().to('http://localhost:8080/admin/master/console/'))
 			.then(() => driver.sleep(3000))
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Credentials
+		.then(() => intent('Credentials'))
 			.then(() => driver.findElement(By.id('username')).sendKeys('admin'))
 			.then(() => driver.findElement(By.id('password')).sendKeys('adminp'))
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Submit the login form
+		.then(() => intent('Submit the login form'))
 			.then(() => driver.findElement(By.id('kc-login')).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Deploy the realm list
+		.then(() => intent('Deploy the realm list'))
 			.then(() => driver.sleep(3000))
 			.then(() => driver.findElement(By.id('realm-select')).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Add a realm
+		.then(() => intent('Add a realm'))
 			.then(() => driver.findElement(By.xpath("//a[@data-testid = 'add-realm']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 
-		// Fill in the realm form
+		.then(() => intent('Fill in the realm form'))
 			.then(() => driver.findElement(By.id('kc-realm-name')).sendKeys('canigou'))
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Submit the realm form
+		.then(() => intent('Submit the realm form'))
 			.then(() => driver.findElement(By.css('button.pf-m-primary')).click())
 			.then(() => driver.sleep(3000))
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Go to the realm settings
+		.then(() => intent('Go to the realm settings'))
 			.then(() => driver.findElement(By.id('nav-item-realm-settings')).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Open the Events tab
+		.then(() => intent('Open the Events tab'))
 			.then(() => driver.findElement(By.xpath("//span[text() = 'Events']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Open the popup listbox
+		.then(() => intent('Open the popup listbox'))
 			.then(() => driver.findElement(By.xpath("//button[contains(@aria-labelledby, 'eventsListeners')]")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Select: "keycloak-event-gateway" in the listbox
+		.then(() => intent('Select: "keycloak-event-gateway" in the listbox'))
 			.then(() => driver.findElement(By.xpath("//button[. = 'keycloak-event-gateway']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 			
-		// Deploy the action menu
+		.then(() => intent('Deploy the action menu'))
 			.then(() => driver.findElement(By.xpath("//div[@data-testid = 'action-dropdown']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 
-		// Ask to delete the realm
+		.then(() => intent('Ask to delete the realm'))
 			.then(() => driver.findElement(By.xpath("//a[text() = 'Delete']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
 
-		// Confirm the realm deletion
+		.then(() => intent('Confirm the realm deletion'))
 			.then(() => driver.findElement(By.xpath("//button[@id = 'modal-confirm']")).click())
 			.then(() => driver.sleep(3000))
 			.then(() => takeScreenshotAndIncreaseCounter())
