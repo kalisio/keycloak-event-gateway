@@ -1,3 +1,6 @@
+# File: keycloak-event-gateway/docker-compose.yml
+#
+
 version: '3'
 
 services:
