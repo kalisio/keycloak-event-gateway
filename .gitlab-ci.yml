@@ -13,16 +13,25 @@ cache:
     - .m2/repository/
 
 stages:
-  - install
+  - build
   - test
 
 maven:
-  stage: install
+  stage: build
   only:
     refs:
       - master
   script:
     - mvn ${MAVEN_CLI_OPTS} -P${MAVEN_PROFILE} clean install
+
+
+docker_build:
+  stage: build
+  only:
+    refs:
+      - master
+  script:
+    - ./build.sh
 
 mocha:
   stage: test
