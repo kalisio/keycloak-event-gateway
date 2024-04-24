@@ -1,1 +1,1 @@
-com.kalisio.keycloak.FeathersEmitterProviderFactory
+com.kalisio.keycloak.CustomEventListenerProviderFactory
