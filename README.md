@@ -4,6 +4,8 @@
 
 ## Build the SPI
 
+### Build the JAR file
+
 Prerequisites: Java, Maven
 
 
@@ -11,13 +13,29 @@ Prerequisites: Java, Maven
 $ mvn install
 ```
 
-That builds a JAR in the `target` directory,
+That builds a JAR file in the `target` directory,
 and you have to copy this JAR into the
 `/opt/keycloak/providers/` directory
 of your Keycloak installation so the event listener
 can be seen by Keycloak at boot time.
 
 ![Diagram](xxx)
+
+### Embed the JAR file in a Docker image
+
+Prerequisites: Docker
+
+
+```shell
+$ ./build.sh
+```
+
+That stores the JAR file at the root
+directory of a minimal Docker image,
+making it able to be accessed from a
+Docker container running Keycloak. See
+the [`docker-compose.yml`](./docker-compose.yml) file
+for an exemple of configuration.
 
 ## Deploy locally
 
