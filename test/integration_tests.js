@@ -78,6 +78,42 @@ describe('integration_tests', () => {
 			.then(() => driver.sleep(3000))
 			.then(() => driver.takeScreenshot())
 			.then((data) => storeScreenshot(data))
+			
+		// Go to the realm settings
+			.then(() => driver.findElement(By.id('nav-item-realm-settings')).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+			
+		// Open the Events tab
+			.then(() => driver.findElement(By.xpath("//span[text() = 'Events']")).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+			
+		// Open the popup listbox
+			.then(() => driver.findElement(By.xpath("//button[contains(@aria-labelledby, 'eventsListeners')]")).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+			
+		// Select: "feathers-emitter" in the listbox
+			.then(() => driver.findElement(By.xpath("//button[. = 'feathers-emitter']")).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+			
+		// Deploy the action menu
+			.then(() => driver.findElement(By.xpath("//div[@data-testid = 'action-dropdown']")).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+
+		// Ask to delete the realm
+			.then(() => driver.findElement(By.xpath("//a[text() = 'Delete']")).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+
+		// Confirm the realm deletion
+			.then(() => driver.findElement(By.xpath("//button[@id = 'modal-confirm']")).click())
+			.then(() => driver.sleep(3000))
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
 
 		// End
 			.then(() => done())
