@@ -12,6 +12,7 @@
     <artifactId>keycloak-event-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>    
     <name>keycloak-event-gateway</name>
+	<url>https://github.com/kalisio/keycloak-event-gateway</url>
 
     <properties>
     	<kc.version>24.0.2</kc.version>
