@@ -18,20 +18,23 @@ const driver = new webdriver.Builder()
 
 var screenshotCount = 0;
 
-const storeScreenshot = (data) => {
+const takeScreenshotAndIncreaseCounter = () => {
 
-	++screenshotCount;
-	const fileName = screenshotCount.toString().padStart(8, '0') + '.png';
-	console.log('    -> screenshot: ' + fileName);
-	if (!fs.existsSync('screenshots')) {
-		fs.mkdirSync('screenshots');
-	}
-	fs.writeFileSync('screenshots/' + fileName, data, 'base64', (error) => {
-		if (error) {
-			console.log(error);
-			assert.fail('While taking screenshot: ' + fileName);
+	driver.takeScreenshot().then((data) => {
+	
+		++screenshotCount;
+		const fileName = screenshotCount.toString().padStart(8, '0') + '.png';
+		console.log('    -> screenshot: ' + fileName);
+		if (!fs.existsSync('screenshots')) {
+			fs.mkdirSync('screenshots');
 		}
-	})
+		fs.writeFileSync('screenshots/' + fileName, data, 'base64', (error) => {
+			if (error) {
+				console.log(error);
+				assert.fail('While taking screenshot: ' + fileName);
+			}
+		})
+	});
 };
 
 describe('integration_tests', () => {
@@ -43,77 +46,63 @@ describe('integration_tests', () => {
 		// Login page
 			.navigate().to('http://localhost:8080/admin/master/console/')
 			.then(() => driver.sleep(3000))
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Credentials
 			.then(() => driver.findElement(By.id('username')).sendKeys('admin'))
 			.then(() => driver.findElement(By.id('password')).sendKeys('adminp'))
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Submit the login form
 			.then(() => driver.findElement(By.id('kc-login')).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Deploy the realm list
 			.then(() => driver.sleep(3000))
 			.then(() => driver.findElement(By.id('realm-select')).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Add a realm
 			.then(() => driver.findElement(By.xpath("//a[@data-testid = 'add-realm']")).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 
 		// Fill in the realm form
 			.then(() => driver.findElement(By.id('kc-realm-name')).sendKeys('canigou'))
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Submit the realm form
 			.then(() => driver.findElement(By.css('button.pf-m-primary')).click())
 			.then(() => driver.sleep(3000))
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Go to the realm settings
 			.then(() => driver.findElement(By.id('nav-item-realm-settings')).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Open the Events tab
 			.then(() => driver.findElement(By.xpath("//span[text() = 'Events']")).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Open the popup listbox
 			.then(() => driver.findElement(By.xpath("//button[contains(@aria-labelledby, 'eventsListeners')]")).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Select: "keycloak-event-gateway" in the listbox
 			.then(() => driver.findElement(By.xpath("//button[. = 'keycloak-event-gateway']")).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 			
 		// Deploy the action menu
 			.then(() => driver.findElement(By.xpath("//div[@data-testid = 'action-dropdown']")).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 
 		// Ask to delete the realm
 			.then(() => driver.findElement(By.xpath("//a[text() = 'Delete']")).click())
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 
 		// Confirm the realm deletion
 			.then(() => driver.findElement(By.xpath("//button[@id = 'modal-confirm']")).click())
 			.then(() => driver.sleep(3000))
-			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data))
+			.then(() => takeScreenshotAndIncreaseCounter())
 
 		// End
 			.then(() => done())
