@@ -2,7 +2,8 @@
 
 image: registry.gitlab.com/avcompris/kalisio/avc-kalisio-workspace/avcompris/kalisio-workspace
 variables:
-  MAVEN_CLI_OPTS: "-s .gitlab-ci/settings.xml --batch-mode --errors --fail-at-end --show-version"
+  # MAVEN_CLI_OPTS: "-s .gitlab-ci/settings.xml --batch-mode --errors --fail-at-end --show-version"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
   MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/repository -Djava.awt.headless=true"
   MAVEN_PROFILE: gitlab
   DOCKER_HOST: tcp://172.17.0.1:2375
