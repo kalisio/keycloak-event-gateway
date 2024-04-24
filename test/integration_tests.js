@@ -25,7 +25,7 @@ const intent = (message) => new Promise((resolve, project) => {
 
 var screenshotCount = 0;
 
-const takeScreenshotAndIncreaseCounter = () => {
+const takeScreenshotAndIncreaseCounter = () => new Promise((resolve, reject) => {
 
 	driver.takeScreenshot().then((data) => {
 	
@@ -41,8 +41,10 @@ const takeScreenshotAndIncreaseCounter = () => {
 				assert.fail('While taking screenshot: ' + fileName);
 			}
 		})
-	});
-};
+
+	}).then(resolve, reject);
+
+});
 
 describe('integration_tests', () => {
 
