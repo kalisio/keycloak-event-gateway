@@ -16,8 +16,8 @@ services:
 
   keycloak:
       image: quay.io/keycloak/keycloak:22.0.5
-      command: start-dev \
-        --spi-events-listener-feathers-emitter-endpoint=http://localhost:8082
+      #command: start-dev \
+      #  --spi-events-listener-feathers-emitter-endpoint=http://localhost:8082
       environment:
         KC_DB: postgres
         KC_DB_URL_HOST: postgres
@@ -28,7 +28,7 @@ services:
         KEYCLOAK_ADMIN: admin
         KEYCLOAK_ADMIN_PASSWORD: Pass;word1
       volumes:
-      - ./target/feathers-emitter-24.0.2.jar://opt/keycloak/providers/feathers-emitter.jar
+      - ./target/keycloak-event-gateway-0.0.1-SNAPSHOT.jar://opt/keycloak/providers/keycloak-event-gateway.jar
       ports:
         - 8080:8080
       depends_on:

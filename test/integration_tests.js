@@ -94,8 +94,8 @@ describe('integration_tests', () => {
 			.then(() => driver.takeScreenshot())
 			.then((data) => storeScreenshot(data))
 			
-		// Select: "feathers-emitter" in the listbox
-			.then(() => driver.findElement(By.xpath("//button[. = 'feathers-emitter']")).click())
+		// Select: "keycloak-event-gateway" in the listbox
+			.then(() => driver.findElement(By.xpath("//button[. = 'keycloak-event-gateway']")).click())
 			.then(() => driver.takeScreenshot())
 			.then((data) => storeScreenshot(data))
 			

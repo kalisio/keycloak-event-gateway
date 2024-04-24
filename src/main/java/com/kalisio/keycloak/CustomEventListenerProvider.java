@@ -29,7 +29,7 @@ public class CustomEventListenerProvider implements EventListenerProvider {
 
 	private final String kcVersion; // e.g. "22.0.5"
 
-	private static final String KALISIO_EVENT_EMITTER_USER = "kalisio-event-emitter";
+	private static final String KEYCLOAK_EVENT_GATEWAY_USER = "keycloak-event-gateway";
 
 	private static final Logger log = Logger.getLogger(CustomEventListenerProvider.class);
 
@@ -191,11 +191,11 @@ public class CustomEventListenerProvider implements EventListenerProvider {
 
 		final RealmModel realm = session.realms().getRealmByName(realmName);
 
-		final UserModel eventEmitterUser = session.users().getUserByUsername(realm, KALISIO_EVENT_EMITTER_USER);
+		final UserModel eventEmitterUser = session.users().getUserByUsername(realm, KEYCLOAK_EVENT_GATEWAY_USER);
 
 		if (eventEmitterUser == null) {
 			log.warnf("No \"%s\" user has been declared in realm: %s", //
-					KALISIO_EVENT_EMITTER_USER, //
+					KEYCLOAK_EVENT_GATEWAY_USER, //
 					realmName);
 			return;
 		}
@@ -204,7 +204,7 @@ public class CustomEventListenerProvider implements EventListenerProvider {
 
 		if (configs.length == 0) {
 			log.warnf("No configuration via custom attributes for the \"%s\" user in realm: %s has been declared.", //
-					KALISIO_EVENT_EMITTER_USER, //
+					KEYCLOAK_EVENT_GATEWAY_USER, //
 					realmName);
 			return;
 		}
