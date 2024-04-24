@@ -8,6 +8,7 @@
 
 import { assert } from 'chai';
 import webdriver from 'selenium-webdriver';
+import { By } from 'selenium-webdriver';
 import fs from 'fs';
 
 const driver = new webdriver.Builder()
@@ -15,14 +16,42 @@ const driver = new webdriver.Builder()
 	.withCapabilities(webdriver.Capabilities.firefox()) // Uses RemoteWebDriver
 	.build();
 
+var screenshotCount = 0;
+
+const storeScreenshot = (data) => {
+
+	++screenshotCount;
+	const fileName = screenshotCount.toString().padStart(8, '0') + '.png';
+	console.log('    -> screenshot: ' + fileName);
+	if (!fs.existsSync('screenshots')) {
+		fs.mkdirSync('screenshots');
+	}
+	fs.writeFileSync('screenshots/' + fileName, data, 'base64', (error) => {
+		if (error) {
+			console.log(error);
+			assert.fail('While taking screenshot: ' + fileName);
+		}
+	})
+};
+
 describe('integration_tests', () => {
 
 	it('browses Keycloak config', (done) => {
 		
-		driver		
+		driver
+		
+		// Login page
 			.navigate().to('http://localhost:8080/admin/master/console/')
 			.then(() => driver.sleep(3000))
-			.then(() => customTakeScreenshot(driver))
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data)) 
+			
+		// Credentials
+			.then(() => driver.findElement(By.id('username')).sendKeys('admin'))
+			.then(() => driver.findElement(By.id('password')).sendKeys('adminp'))
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data)) 
+
 			.then(() => done())
 			.catch((error) => {
 				console.log(error);
@@ -45,25 +74,3 @@ describe('integration_tests', () => {
 	});
 
 });
-
-var screenshotCount = 0;
-
-const customTakeScreenshot = (driver) => {
-
-	return driver
-		.takeScreenshot()
-		.then((data) => {
-			if (!fs.existsSync('screenshots')) {
-				fs.mkdirSync('screenshots');
-			}
-			++screenshotCount;
-			const fileName = screenshotCount.toString().padStart(8, '0') + '.png';
-			fs.writeFileSync('screenshots/' + fileName, data, 'base64', (error) => {
-				if (error) {
-					console.log(error);
-					assert.fail('While taking screenshot: ' + fileName);
-				}
-			})
-		});
-};
-
