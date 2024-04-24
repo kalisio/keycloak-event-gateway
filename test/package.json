@@ -1,7 +1,7 @@
 {
   "type": "module",
   "mocha": {
-    "timeout": 10000
+    "timeout": 20000
   },
   "dependencies": {
     "chai": "^5.1.0",

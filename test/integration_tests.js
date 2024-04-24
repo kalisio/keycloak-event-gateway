@@ -44,14 +44,42 @@ describe('integration_tests', () => {
 			.navigate().to('http://localhost:8080/admin/master/console/')
 			.then(() => driver.sleep(3000))
 			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data)) 
+			.then((data) => storeScreenshot(data))
 			
 		// Credentials
 			.then(() => driver.findElement(By.id('username')).sendKeys('admin'))
 			.then(() => driver.findElement(By.id('password')).sendKeys('adminp'))
 			.then(() => driver.takeScreenshot())
-			.then((data) => storeScreenshot(data)) 
+			.then((data) => storeScreenshot(data))
+			
+		// Submit the login form
+			.then(() => driver.findElement(By.id('kc-login')).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+			
+		// Deploy the realm list
+			.then(() => driver.sleep(3000))
+			.then(() => driver.findElement(By.id('realm-select')).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+			
+		// Add a realm
+			.then(() => driver.findElement(By.xpath("//a[@data-testid = 'add-realm']")).click())
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
 
+		// Fill in the realm form
+			.then(() => driver.findElement(By.id('kc-realm-name')).sendKeys('canigou'))
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+			
+		// Submit the realm form
+			.then(() => driver.findElement(By.css('button.pf-m-primary')).click())
+			.then(() => driver.sleep(3000))
+			.then(() => driver.takeScreenshot())
+			.then((data) => storeScreenshot(data))
+
+		// End
 			.then(() => done())
 			.catch((error) => {
 				console.log(error);
