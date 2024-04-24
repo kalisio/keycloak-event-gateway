@@ -1,0 +1,47 @@
+# File: keycloak-event-gateway/.gitlab-ci.yml
+
+image: registry.gitlab.com/avcompris/kalisio/avc-kalisio-workspace/avcompris/kalisio-workspace
+variables:
+  MAVEN_CLI_OPTS: "-s .gitlab-ci/settings.xml --batch-mode --errors --fail-at-end --show-version"
+  MAVEN_OPTS: "-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/repository -Djava.awt.headless=true"
+  MAVEN_PROFILE: gitlab
+  DOCKER_HOST: tcp://172.17.0.1:2375
+cache:
+  key: ALL
+  paths:
+    - .m2/repository/
+
+stages:
+  - install
+  - test
+
+maven:
+  stage: install
+  only:
+    refs:
+      - master
+  script:
+    - mvn ${MAVEN_CLI_OPTS} -P${MAVEN_PROFILE} clean install
+
+mocha:
+  stage: test
+  only:
+    refs:
+      - master
+  artifacts:
+    when: always
+    paths:
+      - test/screenshots
+  before_script:
+    - cd test
+    - docker-compose down
+    - docker-compose up -d
+    - scripts/wait_for_docker_container.sh keycloak "Running the server in development mode."
+    - scripts/wait_for_docker_container.sh selenium "Started Selenium Standalone"
+  script:
+    - cd test
+    - npm install
+    - SELENIUM_REMOTE_URL=http://localhost:4444/wd/hub npx mocha integration_tests.js
+  after_script:
+    - cd test
+    - docker-compose down
