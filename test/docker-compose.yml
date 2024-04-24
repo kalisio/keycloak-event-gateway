@@ -3,12 +3,16 @@
 # Deploys containers for local tests: Keycloak + listener, and Selenium
 #
 
-version: '3'
+version: '3.8'
 
 services:
 
-#  keycloak-event-gateway:
-#      image: kalisio/keycloak-event-gateway
+  keycloak_event_gateway:
+      image: kalisio/keycloak-event-gateway
+      environment:
+        TARGET_DIR: /kalisio/artifacts
+      volumes:
+        - artifacts:/kalisio/artifacts
 
   keycloak:
       image: quay.io/keycloak/keycloak:22.0.5
@@ -17,18 +21,22 @@ services:
         KC_HOSTNAME: localhost
         KEYCLOAK_ADMIN: admin
         KEYCLOAK_ADMIN_PASSWORD: adminp
- #     volumes:
-  #      - ./target/feathers-emitter-24.0.2.jar://opt/keycloak/providers/feathers-emitter.jar
+      depends_on:
+        - keycloak_event_gateway
+      volumes:
+        - artifacts:/opt/keycloak/providers:ro
       ports:
         - 8080:8080
 
   selenium:
       image: selenium/standalone-firefox:110.0
       # Required so Selenium can access Keycloak through http://localhost:8080
-      network_mode: host 
+      network_mode: host
       # ports:
-        # Cannot use because we use --network=host
-        # - 4444:4444 
+        # Cannot use "ports 4444:4444", because we use --network=host
+        # - 4444:4444
 
-#volumes:
-#  keycloak-feathers-broker-postgres:
+volumes:
+   # We use a named volume so the keycloak_event_gateway container can
+   # provide its JAR file to the keycloak container.
+   artifacts:
