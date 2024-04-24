@@ -34,15 +34,15 @@ mocha:
     paths:
       - test/screenshots
   before_script:
-    - cd test
+    - cd ${CI_PROJECT_DIR}/test
     - docker-compose down
     - docker-compose up -d
     - ../scripts/wait_for_docker_container.sh test_keycloak_1 "Running the server in development mode."
     - ../scripts/wait_for_docker_container.sh test_selenium_1 "Started Selenium Standalone"
   script:
-    - cd test
+    - cd ${CI_PROJECT_DIR}/test
     - npm install
     - SELENIUM_REMOTE_URL=http://localhost:4444/wd/hub npx mocha integration_tests.js
   after_script:
-    - cd test
+    - cd ${CI_PROJECT_DIR}/test
     - docker-compose down
