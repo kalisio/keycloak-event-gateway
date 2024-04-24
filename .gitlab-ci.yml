@@ -37,8 +37,8 @@ mocha:
     - cd test
     - docker-compose down
     - docker-compose up -d
-    - scripts/wait_for_docker_container.sh keycloak "Running the server in development mode."
-    - scripts/wait_for_docker_container.sh selenium "Started Selenium Standalone"
+    - ../scripts/wait_for_docker_container.sh keycloak "Running the server in development mode."
+    - ../scripts/wait_for_docker_container.sh selenium "Started Selenium Standalone"
   script:
     - cd test
     - npm install
