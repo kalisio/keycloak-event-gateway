@@ -4,20 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.keycloak</groupId>
-        <artifactId>keycloak-parent</artifactId>
-        <version>24.0.2</version>
-    </parent>
-
+	<!--
+	 !	Do not inherit from keycloak-parent, so we implement our own project 
+	 !	version and lifecycle.
+	 !-->
     <groupId>com.kalisio.keycloak</groupId>
     <artifactId>keycloak-event-gateway</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    
+    <version>0.0.1-SNAPSHOT</version>    
     <name>keycloak-event-gateway</name>
 
     <properties>
+    	<kc.version>24.0.2</kc.version>
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -28,21 +25,25 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-core</artifactId>
+            <version>${kc.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-server-spi</artifactId>
+            <version>${kc.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-server-spi-private</artifactId>
+            <version>${kc.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-services</artifactId>
+            <version>${kc.version}</version>
             <scope>provided</scope>
         </dependency>
         <!--dependency>
@@ -50,6 +51,7 @@
             <artifactId>keycloak-saml-core-public</artifactId>
             <scope>provided</scope>
         </dependency-->
+        <!--
         <dependency>
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging</artifactId>
@@ -58,7 +60,9 @@
         <dependency>
             <groupId>org.jboss.spec.javax.ws.rs</groupId>
             <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+            <version>2.0.2.Final</version>
         </dependency>
+        -->
     </dependencies>
 
     <build>
