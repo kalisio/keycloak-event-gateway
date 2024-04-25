@@ -123,7 +123,6 @@ describe('integration_tests', () => {
 	after((done) => {
 
 		driver
-			.sleep(3000)
 			.then(() => driver.quit())
 			.then(() => done())
 			.catch((error) => {
