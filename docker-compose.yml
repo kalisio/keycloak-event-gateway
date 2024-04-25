@@ -28,7 +28,7 @@ services:
         KEYCLOAK_ADMIN: admin
         KEYCLOAK_ADMIN_PASSWORD: Pass;word1
       volumes:
-      - ./target/keycloak-event-gateway-0.0.1-SNAPSHOT.jar://opt/keycloak/providers/keycloak-event-gateway.jar
+      - ./target/keycloak-event-gateway-0.0.1-SNAPSHOT.jar:/opt/keycloak/providers/keycloak-event-gateway.jar
       ports:
         - 8080:8080
       depends_on:
