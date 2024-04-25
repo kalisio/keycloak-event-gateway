@@ -28,7 +28,7 @@ var screenshotCount = 0;
 const takeScreenshotAndIncreaseCounter = () => new Promise((resolve, reject) => {
 
 	driver.takeScreenshot().then((data) => {
-	
+
 		++screenshotCount;
 		const fileName = screenshotCount.toString().padStart(8, '0') + '.png';
 		console.log('    -> screenshot: %s', fileName);
@@ -49,28 +49,28 @@ const takeScreenshotAndIncreaseCounter = () => new Promise((resolve, reject) => 
 describe('integration_tests', () => {
 
 	it('browses Keycloak config', (done) => {
-		
+
 		ready()
-		
+
 		.then(intent('Login page'))
 			.then(() => driver.navigate().to('http://localhost:8080/admin/master/console/'))
 			.then(() => driver.sleep(3000))
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Credentials'))
 			.then(() => driver.findElement(By.id('username')).sendKeys('admin'))
 			.then(() => driver.findElement(By.id('password')).sendKeys('adminp'))
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Submit the login form'))
 			.then(() => driver.findElement(By.id('kc-login')).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Deploy the realm list'))
 			.then(() => driver.sleep(3000))
 			.then(() => driver.findElement(By.id('realm-select')).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Add a realm'))
 			.then(() => driver.findElement(By.xpath("//a[@data-testid = 'add-realm']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
@@ -78,28 +78,28 @@ describe('integration_tests', () => {
 		.then(intent('Fill in the realm form'))
 			.then(() => driver.findElement(By.id('kc-realm-name')).sendKeys('canigou'))
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Submit the realm form'))
 			.then(() => driver.findElement(By.css('button.pf-m-primary')).click())
 			.then(() => driver.sleep(3000))
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Go to the realm settings'))
 			.then(() => driver.findElement(By.id('nav-item-realm-settings')).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Open the Events tab'))
 			.then(() => driver.findElement(By.xpath("//span[text() = 'Events']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Open the popup listbox'))
 			.then(() => driver.findElement(By.xpath("//button[contains(@aria-labelledby, 'eventsListeners')]")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Select: "keycloak-event-gateway" in the listbox'))
 			.then(() => driver.findElement(By.xpath("//button[. = 'keycloak-event-gateway']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
-			
+
 		.then(intent('Deploy the action menu'))
 			.then(() => driver.findElement(By.xpath("//div[@data-testid = 'action-dropdown']")).click())
 			.then(() => takeScreenshotAndIncreaseCounter())
@@ -118,9 +118,8 @@ describe('integration_tests', () => {
 			console.log(error);
 			done(error);
 		});
-			
 	});
-	
+
 	after((done) => {
 
 		driver
@@ -131,7 +130,5 @@ describe('integration_tests', () => {
 				console.log(error);
 				done(error);
 			});
-			
 	});
-
 });
