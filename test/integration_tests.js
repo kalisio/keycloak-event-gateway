@@ -4,7 +4,8 @@
 //
 //     $ docker-compose up -d
 //     $ npm install
-//     $ SELENIUM_REMOTE_URL=http://localhost:4444/wd/hub npx mocha integration_tests.js
+//     $ export SELENIUM_REMOTE_URL=http://localhost:4444/wd/hub
+//     $ npx mocha integration_tests.js
 
 import { assert } from 'chai';
 import webdriver from 'selenium-webdriver';
