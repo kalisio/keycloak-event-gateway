@@ -51,7 +51,8 @@ mocha:
   script:
     - cd ${CI_PROJECT_DIR}/test
     - npm install
-    - SELENIUM_REMOTE_URL=http://172.17.0.1:4444/wd/hub npx mocha integration_tests.js
+    - export SELENIUM_REMOTE_URL=http://172.17.0.1:4444/wd/hub
+    - npx mocha integration_tests.js
   after_script:
     - cd ${CI_PROJECT_DIR}/test
     - docker-compose down
