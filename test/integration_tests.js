@@ -18,7 +18,7 @@ const driver = new webdriver.Builder()
 
 const ready = () => Promise.resolve();
 
-const intent = (message) => () => new Promise((resolve, project) => {
+const intent = (message) => () => new Promise((resolve, reject) => {
 	console.log('    intent: %s', message);
 	resolve();
 });
