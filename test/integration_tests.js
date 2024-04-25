@@ -73,6 +73,7 @@ describe('integration_tests', () => {
 
 		.then(intent('Add a realm'))
 			.then(() => driver.findElement(By.xpath("//a[@data-testid = 'add-realm']")).click())
+			.then(() => driver.sleep(2000))
 			.then(() => takeScreenshotAndIncreaseCounter())
 
 		.then(intent('Fill in the realm form'))

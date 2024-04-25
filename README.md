@@ -64,7 +64,8 @@ Prerequisites: Node, Selenium
 $ cd test
 $ docker-compose up -d
 $ npm install
-$ npx mocha integration_test.js
+$ export SELENIUM_REMOTE_URL=http://localhost:4444/wd/hub
+$ npx mocha integration_tests.js
 ```
 
 
