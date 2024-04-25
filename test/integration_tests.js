@@ -1,4 +1,4 @@
-// File: keycloak-event-gateway/test/integration_tests.sh
+// File: keycloak-event-gateway/test/integration_tests.js
 //
 // Run these tests with the following commands:
 //
