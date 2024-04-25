@@ -19,7 +19,7 @@ const driver = new webdriver.Builder()
 const ready = () => Promise.resolve();
 
 const intent = (message) => () => new Promise((resolve, project) => {
-	console.log('    intent: ' + message);
+	console.log('    intent: %s', message);
 	resolve();
 });
 
@@ -31,7 +31,7 @@ const takeScreenshotAndIncreaseCounter = () => new Promise((resolve, reject) => 
 	
 		++screenshotCount;
 		const fileName = screenshotCount.toString().padStart(8, '0') + '.png';
-		console.log('    -> screenshot: ' + fileName);
+		console.log('    -> screenshot: %s', fileName);
 		if (!fs.existsSync('screenshots')) {
 			fs.mkdirSync('screenshots');
 		}
