@@ -52,11 +52,6 @@ const context = {
 	}),
 };
 
-export const intent = (message) => () => new Promise((resolve, reject) => {
-	console.log('    intent: %s', message);
-	resolve();
-});
-
 var screenshotCount = 0;
 
 describe('integration_tests', () => {
