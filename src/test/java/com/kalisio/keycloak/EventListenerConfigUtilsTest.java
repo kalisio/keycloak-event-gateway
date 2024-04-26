@@ -70,6 +70,48 @@ public class EventListenerConfigUtilsTest {
 		assertEquals("monqueue", configs[1].getQueueName());
 	}
 
+	@Test
+	public void testEventListenerConfigUtils_one_accessToken_splitInFour() throws Exception {
+
+		final EventListenerConfig[] configs = extractEventListenerConfigs(map( //
+				"keycloakEventHttpListenerUrl", "http://localhost:8080/api/keycloak-events", //
+				"accessToken.0", "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE3MTQxMzczNTcsImV4cCI6MTcx", //
+				"accessToken.1", "NDIyMzc1NywiYXVkIjoia2FsaXNpbyIsImlzcyI6ImthbGlzaW8iLCJzdWIiOiI2NjJiYTYxNTRkM", //
+				"accessToken.2", "mYxZjBhN2ZmZDhiMTUiLCJqdGkiOiI1MzAwNDk3Mi01YWU5LTRkMTEtOTMxOS0zOTA0YTIxYTVmNW", //
+				"accessToken.3", "QifQ.dJxU1RhGs5wTwTt6DdJ3g_xIKmCYSohfmJVNilcTUBM", //
+				"keycloakEventQueue", "monqueue"));
+
+		assertEquals(1, configs.length);
+		assertEquals(null, configs[0].getPrefix());
+		assertEquals("http://localhost:8080/api/keycloak-events", configs[0].getHttpListenerUrl());
+		assertEquals("eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE3MTQxMzczNTcsImV4cCI6MTcx"
+				+ "NDIyMzc1NywiYXVkIjoia2FsaXNpbyIsImlzcyI6ImthbGlzaW8iLCJzdWIiOiI2NjJiYTYxNTRkM"
+				+ "mYxZjBhN2ZmZDhiMTUiLCJqdGkiOiI1MzAwNDk3Mi01YWU5LTRkMTEtOTMxOS0zOTA0YTIxYTVmNW"
+				+ "QifQ.dJxU1RhGs5wTwTt6DdJ3g_xIKmCYSohfmJVNilcTUBM", configs[0].getAccessToken());
+		assertEquals("monqueue", configs[0].getQueueName());
+	}
+
+	@Test
+	public void testEventListenerConfigUtils_oneWithPrefix_accessToken_splitInFour() throws Exception {
+
+		final EventListenerConfig[] configs = extractEventListenerConfigs(map( //
+				"a1.keycloakEventHttpListenerUrl", "http://localhost:8080/api/keycloak-events", //
+				"a1.accessToken.0", "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE3MTQxMzczNTcsImV4cCI6MTcx", //
+				"a1.accessToken.1", "NDIyMzc1NywiYXVkIjoia2FsaXNpbyIsImlzcyI6ImthbGlzaW8iLCJzdWIiOiI2NjJiYTYxNTRkM", //
+				"a1.accessToken.2", "mYxZjBhN2ZmZDhiMTUiLCJqdGkiOiI1MzAwNDk3Mi01YWU5LTRkMTEtOTMxOS0zOTA0YTIxYTVmNW", //
+				"a1.accessToken.3", "QifQ.dJxU1RhGs5wTwTt6DdJ3g_xIKmCYSohfmJVNilcTUBM", //
+				"a1.keycloakEventQueue", "monqueue"));
+
+		assertEquals(1, configs.length);
+		assertEquals("a1", configs[0].getPrefix());
+		assertEquals("http://localhost:8080/api/keycloak-events", configs[0].getHttpListenerUrl());
+		assertEquals("eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE3MTQxMzczNTcsImV4cCI6MTcx"
+				+ "NDIyMzc1NywiYXVkIjoia2FsaXNpbyIsImlzcyI6ImthbGlzaW8iLCJzdWIiOiI2NjJiYTYxNTRkM"
+				+ "mYxZjBhN2ZmZDhiMTUiLCJqdGkiOiI1MzAwNDk3Mi01YWU5LTRkMTEtOTMxOS0zOTA0YTIxYTVmNW"
+				+ "QifQ.dJxU1RhGs5wTwTt6DdJ3g_xIKmCYSohfmJVNilcTUBM", configs[0].getAccessToken());
+		assertEquals("monqueue", configs[0].getQueueName());
+	}
+
 	private static Map<String, List<String>> map(
 		final String... s
 	) {

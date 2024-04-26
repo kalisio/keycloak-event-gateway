@@ -1,9 +1,9 @@
 package com.kalisio.keycloak;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static com.kalisio.keycloak.EventListenerConfig.ACCESS_TOKEN;
 import static com.kalisio.keycloak.EventListenerConfig.KEYCLOAK_EVENT_HTTP_LISTENER_URL;
 import static com.kalisio.keycloak.EventListenerConfig.KEYCLOAK_EVENT_QUEUE;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.List;
 import java.util.Map;
@@ -23,7 +23,7 @@ public abstract class EventListenerConfigUtils {
 
 		checkNotNull(attributes, "attributes");
 
-		final Map<String, Map<String, String>> configAttributesByKeys = Maps.newHashMap();
+		final Map<String, Map<SplitKey, String>> configAttributesByKeys = Maps.newHashMap();
 
 		for (final String key : attributes.keySet()) {
 
@@ -38,28 +38,55 @@ public abstract class EventListenerConfigUtils {
 
 			@Nullable
 			final String prefix;
-			final String suffix;
+			final String command;
+			@Nullable
+			final Integer splitIndex;
 
 			final int index = key.indexOf(".");
 
 			if (index == -1) {
 
 				prefix = null;
-				suffix = key;
+				command = key;
+				splitIndex = null;
 
 			} else {
 
-				prefix = key.substring(0, index);
-				suffix = key.substring(index + 1);
+				final int index2 = key.indexOf(".", index + 1);
+
+				if (index2 != -1) {
+
+					prefix = key.substring(0, index);
+					command = key.substring(index + 1, index2);
+					splitIndex = parseIntOrNull(key.substring(index2 + 1));
+
+				} else {
+
+					final String left = key.substring(0, index);
+					final String right = key.substring(index + 1);
+
+					if (ACCESS_TOKEN.equals(left)) {
+
+						prefix = null;
+						command = left;
+						splitIndex = parseIntOrNull(key.substring(index + 1));
+
+					} else {
+
+						prefix = left;
+						command = right;
+						splitIndex = null;
+					}
+				}
 			}
 
 			final String configKey = (prefix == null) ? "" : prefix;
 
-			if (KEYCLOAK_EVENT_HTTP_LISTENER_URL.equals(suffix) //
-					|| ACCESS_TOKEN.equals(suffix) //
-					|| KEYCLOAK_EVENT_QUEUE.equals(suffix)) {
+			if (KEYCLOAK_EVENT_HTTP_LISTENER_URL.equals(command) //
+					|| ACCESS_TOKEN.equals(command) //
+					|| KEYCLOAK_EVENT_QUEUE.equals(command)) {
 
-				final Map<String, String> configAttributes;
+				final Map<SplitKey, String> configAttributes;
 
 				if (configAttributesByKeys.containsKey(configKey)) {
 
@@ -72,7 +99,7 @@ public abstract class EventListenerConfigUtils {
 					configAttributesByKeys.put(configKey, configAttributes);
 				}
 
-				configAttributes.put(suffix, value);
+				configAttributes.put(new SplitKey(command, splitIndex), value);
 			}
 		}
 
@@ -80,7 +107,7 @@ public abstract class EventListenerConfigUtils {
 
 		for (final String configKey : Sets.newTreeSet(configAttributesByKeys.keySet())) {
 
-			final Map<String, String> configAttributes = configAttributesByKeys.get(configKey);
+			final Map<SplitKey, String> configAttributes = configAttributesByKeys.get(configKey);
 
 			configs.add(new EventListenerConfig() {
 
@@ -95,23 +122,96 @@ public abstract class EventListenerConfigUtils {
 				@Override
 				@Nullable
 				public String getHttpListenerUrl() {
-					return configAttributes.get(KEYCLOAK_EVENT_HTTP_LISTENER_URL);
+					return concatenateSplitValues(configAttributes, KEYCLOAK_EVENT_HTTP_LISTENER_URL);
 				}
 
 				@Override
 				@Nullable
 				public String getAccessToken() {
-					return configAttributes.get(ACCESS_TOKEN);
+					return concatenateSplitValues(configAttributes, ACCESS_TOKEN);
 				}
 
 				@Override
 				@Nullable
 				public String getQueueName() {
-					return configAttributes.get(KEYCLOAK_EVENT_QUEUE);
+					return concatenateSplitValues(configAttributes, KEYCLOAK_EVENT_QUEUE);
 				}
 			});
 		}
 
 		return Iterables.toArray(configs, EventListenerConfig.class);
+	}
+
+	@Nullable
+	private static String concatenateSplitValues(
+		final Map<SplitKey, String> configAttributes,
+		final String command
+	) {
+
+		final StringBuilder sb = new StringBuilder();
+
+		final Map<Integer, String> splitValues = Maps.newHashMap();
+
+		for (final Map.Entry<SplitKey, String> entry : configAttributes.entrySet()) {
+
+			final SplitKey splitKey = entry.getKey();
+			final String value = entry.getValue();
+
+			if (!splitKey.command.equals(command)) {
+				continue;
+			}
+
+			if (splitKey.splitIndex == null) {
+				return value;
+			}
+
+			splitValues.put(splitKey.splitIndex, value);
+		}
+
+		if (splitValues.isEmpty()) {
+
+			return null;
+		}
+
+		splitValues.keySet().stream().sorted().forEach(splitIndex
+
+		-> sb.append(splitValues.get(splitIndex)));
+
+		return sb.toString();
+	}
+
+	@Nullable
+	private static Integer parseIntOrNull(
+		final String s
+	) {
+
+		try {
+
+			return Integer.parseInt(s);
+
+		} catch (final NumberFormatException e) {
+
+			return null;
+		}
+	}
+
+	private static class SplitKey {
+
+		/**
+		 * e.g. "accessToken", "keycloakEventHttpListenerUrl", "keycloakEventQueue"
+		 */
+		public final String command;
+
+		@Nullable
+		public final Integer splitIndex;
+
+		public SplitKey(
+			final String command,
+			@Nullable final Integer splitIndex
+		) {
+
+			this.command = checkNotNull(command, "command");
+			this.splitIndex = splitIndex;
+		}
 	}
 }
