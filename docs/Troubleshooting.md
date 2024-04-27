@@ -1,7 +1,7 @@
 
 _[Back to the home page](../README.md)
-— Previous page: [6. Examples of JSON payloads](./Examples.md)
-— Next page: [8. Known Issues](./Known_Issues.md)_
+— Previous Page: [6. Examples of JSON payloads](./Examples.md)
+— Next Page: [8. Known Issues](./Known_Issues.md)_
 
 --
 
@@ -36,5 +36,5 @@ version of Java compatible with your Keycloak runtime.
 
 
 _[Back to the home page](../README.md)
-— Previous page: [6. Examples of JSON payloads](./Examples.md)
-— Next page: [8. Known Issues](./Known_Issues.md)_
+— Previous Page: [6. Examples of JSON payloads](./Examples.md)
+— Next Page: [8. Known Issues](./Known_Issues.md)_

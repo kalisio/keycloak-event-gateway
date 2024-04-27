@@ -1,6 +1,6 @@
 _[Back to the home page](../README.md)
-— Previous page: [keycloak-event-gateway](../README.md)
-— Next page: [2. Configuration](./Configuration.md)_
+— Previous Page: [keycloak-event-gateway](../README.md)
+— Next Page: [2. Configuration](./Configuration.md)_
 
 --
 
@@ -52,4 +52,4 @@ See the [6. Examples of JSON payloads](Examples.md) page for actual cases.
 --
 
 _[Back to the home page](../README.md)
-— Previous page: [keycloak-event-gateway](../README.md)— Next page: [2. Configuration](./Configuration.md)_
+— Previous Page: [keycloak-event-gateway](../README.md)— Next Page: [2. Configuration](./Configuration.md)_

@@ -1,6 +1,6 @@
 _[Back to the home page](../README.md)
-— Previous page: [2. Configuration](./Configuration.md)
-— Next page: [4. How to deploy locally](./Deploy.md)_
+— Previous Page: [2. Configuration](./Configuration.md)
+— Next Page: [4. How to deploy locally](./Deploy.md)_
 
 --
 
@@ -36,6 +36,6 @@ for an exemple of configuration.
 --
 
 _[Back to the home page](../README.md)
-— Previous page: [2. Configuration](./Configuration.md)
-— Next page: [4. How to deploy locally](./Deploy.md)_
+— Previous Page: [2. Configuration](./Configuration.md)
+— Next Page: [4. How to deploy locally](./Deploy.md)_
 

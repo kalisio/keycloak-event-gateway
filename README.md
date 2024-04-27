@@ -1,5 +1,5 @@
 
-_Next page: [1. Installation and usage](docs/Usage.md)_
+_Next Page: [1. Installation and usage](docs/Usage.md)_
 
 --
 
@@ -31,5 +31,5 @@ declare in the configuration.
 
 --
 
-_Next page: [1. Installation and usage](docs/Usage.md)_
+_Next Page: [1. Installation and usage](docs/Usage.md)_
 
