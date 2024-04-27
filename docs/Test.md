@@ -14,6 +14,18 @@ Prerequisites: Node, Selenium
 ```shell
 $ cd test
 $ docker-compose up -d
+```
+
+
+It deploys the following stack:
+
+![Diagram](diagrams/png/keycloak_event_gateway_test.png)
+
+
+
+Then run:
+
+```shell
 $ npm install
 $ export SELENIUM_REMOTE_URL=http://localhost:4444/wd/hub
 $ npx mocha integration_tests.js
@@ -24,7 +36,7 @@ $ npx mocha integration_tests.js
 Screenshots are taken during the tests.
 
 Examples can be seen here:
-[keycloak-event-gateway-screenshots](https://gitlab.com/avcompris/kalisio/feathers-keycloak-listener-screenshots/)
+[keycloak-event-gateway-screenshots](https://gitlab.com/avcompris/kalisio/keycloak-event-gateway-screenshots/)
 
 
 ## Continuous Integration — CI

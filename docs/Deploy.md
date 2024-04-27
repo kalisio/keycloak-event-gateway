@@ -15,7 +15,17 @@ Prerequisites: docker-compose
 $ docker compose up -d
 ```
 
-![Diagram](xxx)
+It deploys the following stack:
+
+
+![Diagram](diagrams/png/keycloak_event_gateway_deploy.png)
+
+
+
+With a browser, go to [http://localhost:8080](http://localhost:8080)
+
+* username: admin
+* password: Pass;word1
 
 ## Stop the stack
 

@@ -8,9 +8,9 @@ _[Back to the home page](../README.md)
 
 ## Examples of JSON Payloads
 
-xxx
+![xxx](x)
 
-xxx
+![xxx](x)
 
 --
 

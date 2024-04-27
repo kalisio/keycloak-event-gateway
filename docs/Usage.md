@@ -21,13 +21,15 @@ directory on your Keycloak installation.
 
 Restart Keycloak.
 
-![Diagram](xxx)
-
 ## Usage
 
 This Keycloak service provider will forward
 any event emitted by Keycloak in a given realm,
 to HTTP/HTTPS endpoints you declare.
+
+
+![Diagram](diagrams/png/keycloak_event_gateway_usage.png)
+
 
 It will send a
 `Authorization: Bearer <accessToken>` with its
