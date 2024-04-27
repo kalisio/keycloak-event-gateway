@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" modified="2024-04-27T18:00:26.736+02:00" version="24.0.7" type="device">
+	<diagram name="Page-1" id="p1714233626736">
+		<mxGraphModel dx="954" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="981" pageHeight="290" math="0" shadow="0" id="p1714233626736">
+			<root viewBox="0 0 981 290" width="981" height="290">
+				<mxCell id="0"/>
+				<mxCell id="1" parent="0"/>
+				<mxCell id="2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeWidth=2;strokeColor=#333333;fillColor=#e2e2e2;verticalAlign=top;" vertex="1" parent="1" value="keycloak — 8080:8080">
+					<mxGeometry x="206" y="60" width="290" height="220" as="geometry"/>
+				</mxCell>
+				<mxCell id="3" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=0;strokeWidth=0;strokeColor=#333333;fillColor=#cccccc;verticalAlign=top;align=left;" vertex="1" parent="1" value="/opt/keycloak/providers">
+					<mxGeometry x="235" y="184" width="240" height="86" as="geometry"/>
+				</mxCell>
+				<mxCell id="4" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#333333;fillColor=#9fc5e8;" vertex="1" parent="1" value="&lt;b&gt;Keycloak 22.0.5&lt;/b&gt;">
+					<mxGeometry x="295" y="110" width="140" height="50" as="geometry"/>
+				</mxCell>
+				<mxCell id="5" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#333333;fillColor=#cfe2f3;" vertex="1" parent="1" value="&lt;b&gt;keycloak-event-gateway.jar&lt;/b&gt;">
+					<mxGeometry x="256" y="222" width="198" height="30" as="geometry"/>
+				</mxCell>
+				<mxCell id="6" parent="1" value="" style="startArrow=none;html=1;rounded=1;curved=0;exitDx=0;exitDy=0;entryDx=0;entryDy=0;startFill=0;strokeWidth=2;strokeColor=#000000;endArrow=classic;exitX=0.7071067811865476;exitY=1.0;entryX=0.7071067811865476;entryY=0.0;" edge="1" source="4" target="5">
+					<mxGeometry width="50" height="50" relative="1" as="geometry">
+						<mxPoint x="394" y="160" as="sourcePoint"/>
+						<mxPoint x="396" y="222" as="targetPoint"/>
+						<Array as="points">
+							<mxPoint x="393.66161603278334" y="160.0"/>
+						</Array>
+					</mxGeometry>
+				</mxCell>
+			</root>
+		</mxGraphModel>
+	</diagram>
+</mxfile>
