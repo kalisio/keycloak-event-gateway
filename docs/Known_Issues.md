@@ -1,6 +1,6 @@
 _[Back to the home page](../README.md)
-— Previous Page: [7. Troubleshooting](./Troubleshooting.md)
-— Next Page: [9. FAQ](./FAQ.md)_
+— Previous page: [7. Troubleshooting](./Troubleshooting.md)
+— Next page: [9. FAQ](./FAQ.md)_
 
 --
 
@@ -40,6 +40,6 @@ implemented though.
 --
 
 _[Back to the home page](../README.md)
-— Previous Page: [7. Troubleshooting](./Troubleshooting.md)
-— Next Page: [9. FAQ](./FAQ.md)_
+— Previous page: [7. Troubleshooting](./Troubleshooting.md)
+— Next page: [9. FAQ](./FAQ.md)_
 

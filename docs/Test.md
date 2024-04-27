@@ -1,6 +1,6 @@
 _[Back to the home page](../README.md)
-— Previous Page: [4. How to deploy locally](./Deploy.md)
-— Next Page: [6. Examples of JSON payloads](./Examples.md)_
+— Previous page: [4. How to deploy locally](./Deploy.md)
+— Next page: [6. Examples of JSON payloads](./Examples.md)_
 
 --
 
@@ -40,5 +40,5 @@ See the [.gitlab-ci.yml](../.gitlab-ci.yml) configuration.
 --
 
 _[Back to the home page](../README.md)
-— Previous Page: [4. How to deploy locally](./Deploy.md)
-— Next Page: [6. Examples of JSON payloads](./Examples.md)_
+— Previous page: [4. How to deploy locally](./Deploy.md)
+— Next page: [6. Examples of JSON payloads](./Examples.md)_

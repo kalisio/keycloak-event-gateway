@@ -1,6 +1,6 @@
 _[Back to the home page](../README.md)
-— Previous Page: [1. Installation and usage](./Usage.md)
-— Next Page: [3. How to build](./Build.md)_
+— Previous page: [1. Installation and usage](./Usage.md)
+— Next page: [3. How to build](./Build.md)_
 
 --
 
@@ -100,5 +100,5 @@ at launch, and possibly a Java keystore.
 
 
 _[Back to the home page](../README.md)
-— Previous Page: [1. Installation and usage](./Usage.md)
-— Next Page: [3. How to build](./Build.md)_
+— Previous page: [1. Installation and usage](./Usage.md)
+— Next page: [3. How to build](./Build.md)_
