@@ -5,6 +5,6 @@
 
 set -e
 
-mvn install
+mvn clean install
 
 docker build -t kalisio/keycloak-event-gateway .
