@@ -9,7 +9,9 @@ _[Back to the home page](../README.md)
 
 ## Threads usage
 
-Use of threads could possibly lead to errors
+Use of threads for
+asynchronous requests
+could possibly lead to errors
 not yet encountered in our tests.
 
 To prevent those errors, we could think of a
@@ -30,7 +32,7 @@ attribute in the configuration
 (see [2. Configuration](Configuration.md)).
 
 The underlying service is not
-implemented.
+implemented though.
 
 
 

@@ -5,7 +5,7 @@ _[Back to the home page](../README.md)
 
 # 9. FAQ
 
-Does it work with Keycloak 24?
+## Does it work with Keycloak 24?
 
 [xxx]
 

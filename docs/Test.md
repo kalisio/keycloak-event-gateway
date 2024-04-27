@@ -29,7 +29,7 @@ Examples can be seen here:
 
 ## Continuous Integration — CI
 
-As for now, remote
+As for now, autonomous
 tests are run in a GitLab CI
 environment.
 

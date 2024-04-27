@@ -15,6 +15,8 @@ you will start seeing some warnings in the Keycloak
 logs. That is because you have not configured the
 listener yet.
 
+e.g.:
+
 * No `kalisio-event-gateway` user.
 * No `accessToken` and/or `keycloakEventHttpListenerUrl`
   attributes declared.

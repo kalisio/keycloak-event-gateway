@@ -8,6 +8,8 @@ _[Back to the home page](../README.md)
 
 ## Basic configuration
 
+We are using Keycloak 22.0.5.
+
 Through the Keycloak GUI: 
 
 1. Select the realm you want to declare the
@@ -17,7 +19,7 @@ Through the Keycloak GUI:
 3. Save.
 4. In the same realm, create a user
    called `kalisio-event-gateway`.
-5. In Keycloak 22.0.5, go to the Attributes tab.
+5. Go to the Attributes tab.
 6. Add the following attributes:
 
 | Name | Value (examples) |
@@ -46,8 +48,8 @@ This will resolve in
 representation.
 
 If the configuration is incorrect,
-warning messages are added to the 
-Keycloak logs each time an event is emitted.
+warning messages are logged to
+the Keycloak console each time an event is emitted.
 
 
 
@@ -71,10 +73,11 @@ names. For example:
 
 ## Asynchronous calls
 
-The service provider sends HTTP requests asynchronously.
+This service provider sends HTTP requests asynchronously.
 
 Errors during calls
-are simply added to the logs, not interfering
+are simply added to the logs, 
+and do not interfere
 with the Keycloak runtime.
 
 If the further treatments you implement
