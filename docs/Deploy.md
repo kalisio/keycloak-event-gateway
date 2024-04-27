@@ -1,6 +1,6 @@
 _[Back to the home page](../README.md)
-— Previous Page: [3. How to build](./Build.md)
-— Next Page: [5. How to test](./Test.md)_
+— Previous page: [3. How to build](./Build.md)
+— Next page: [5. How to test](./Test.md)_
 
 --
 
@@ -36,5 +36,5 @@ $ docker compose down
 --
 
 _[Back to the home page](../README.md)
-— Previous Page: [3. How to build](./Build.md)
-— Next Page: [5. How to test](./Test.md)_
+— Previous page: [3. How to build](./Build.md)
+— Next page: [5. How to test](./Test.md)_
