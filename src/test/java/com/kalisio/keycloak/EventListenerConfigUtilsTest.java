@@ -112,6 +112,21 @@ public class EventListenerConfigUtilsTest {
 		assertEquals("monqueue", configs[0].getQueueName());
 	}
 
+	@Test
+	public void testEventListenerConfigUtils_one_accessToken_splitStartsAt1() throws Exception {
+
+		final EventListenerConfig[] configs = extractEventListenerConfigs(map( //
+				"accessToken.1", "abcde", //
+				"accessToken.2", "f1234", //
+				"accessToken.3", "xyzt"));
+
+		assertEquals(1, configs.length);
+		assertEquals(null, configs[0].getPrefix());
+		assertEquals(null, configs[0].getHttpListenerUrl());
+		assertEquals("abcdef1234xyzt", configs[0].getAccessToken());
+		assertEquals(null, configs[0].getQueueName());
+	}
+
 	private static Map<String, List<String>> map(
 		final String... s
 	) {
