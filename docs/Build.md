@@ -30,7 +30,7 @@ That stores the JAR file at the root
 directory of a minimal Docker image,
 making it able to be accessed from a
 Docker container running Keycloak. See
-the [`docker-compose.yml`](./docker-compose.yml) file
+the [`docker-compose.yml`](../docker-compose.yml) file
 for an exemple of configuration.
 
 --
