@@ -4,7 +4,7 @@ _[Back to the home page](../README.md)
 
 --
 
-# 3. Configuration
+# 2. Configuration
 
 ## Basic configuration
 
