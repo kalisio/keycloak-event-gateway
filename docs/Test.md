@@ -9,7 +9,7 @@ _[Back to the home page](../README.md)
 
 ## Run the tests
 
-Prerequisites: Node, Selenium
+Prerequisites: Node, Selenium, and the Docker image from this project — see: [3. How to build](Build.md)
 
 ```shell
 $ cd test
@@ -33,7 +33,9 @@ $ npx mocha integration_tests.js
 
 ## Test results: screenshots
 
-Screenshots are taken during the tests.
+Screenshots are taken during the tests
+and saved in the `test/screenshots`
+directory.
 
 Examples can be seen here:
 [keycloak-event-gateway-screenshots](https://gitlab.com/avcompris/kalisio/keycloak-event-gateway-screenshots/)
