@@ -13,6 +13,8 @@ COPY target/keycloak-event-gateway-${ARTIFACT_VERSION}.jar /artifacts/
 
 COPY scripts/entrypoint.sh /
 
+RUN chmod +x /entrypoint.sh
+
 # Keep our container running when started as a daemon (docker run -d)
 #
 ENTRYPOINT ["/entrypoint.sh"]

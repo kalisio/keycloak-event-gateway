@@ -13,8 +13,26 @@ We’re using Keycloak 22.0.5.
 Get the `keycloak-event-gateway-0.0.1-SNAPSHOT.jar`
 JAR file.
 
-(See: [3. How to build](Build.md)  — if you want to
-build the plugin yourself.)
+See: [3. How to build](Build.md)  — if you want to
+build the JAR yourself.
+
+Alternatively you can retrieve the JAR through a
+public Docker image:
+
+````
+$ KGATEWAY=kalisio/keycloak-event-gateway
+$ docker pull \
+   registry.gitlab.com/avcompris/$KGATEWAY/$KGATEWAY
+$ docker tag \
+   registry.gitlab.com/avcompris/$KGATEWAY/$KGATEWAY \
+   kalisio/keycloak-event-gateway
+$ docker run kalisio/keycloak-event-gateway ls /artifacts
+keycloak-event-gateway-0.0.1-SNAPSHOT.jar
+
+$ docker run kalisio/keycloak-event-gateway \
+   cat /artifacts/*.jar > keycloak-event-gateway.jar
+````
+
 
 Copy the JAR to the `/opt/keycloak/providers/`
 directory on your Keycloak installation.
