@@ -19,7 +19,7 @@ build the JAR yourself.
 Alternatively you can retrieve the JAR through a
 public Docker image:
 
-````
+```shell
 $ KGATEWAY=kalisio/keycloak-event-gateway
 $ docker pull \
    registry.gitlab.com/avcompris/$KGATEWAY/$KGATEWAY
@@ -31,7 +31,7 @@ keycloak-event-gateway-0.0.1-SNAPSHOT.jar
 
 $ docker run kalisio/keycloak-event-gateway \
    cat /artifacts/*.jar > keycloak-event-gateway.jar
-````
+```
 
 
 Copy the JAR to the `/opt/keycloak/providers/`
