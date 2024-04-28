@@ -7,7 +7,7 @@ _[Back to the home page](../README.md)
 
 ## Does it work with Keycloak 24?
 
-![xxx](x)
+TODO
 
 --
 
