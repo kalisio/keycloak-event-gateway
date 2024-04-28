@@ -7,8 +7,10 @@ _[Back to the home page](../README.md)
 
 ## Does it work with Keycloak 24?
 
-TODO
-
+The code will work, but we need to check
+that configuring the plugin via the GUI is possible.
+ 
+ 
 --
 
 _[Back to the home page](../README.md)
