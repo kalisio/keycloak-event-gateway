@@ -9,7 +9,7 @@ _[Back to the home page](../README.md)
 
 ## Run the tests
 
-Prerequisites: Node, Selenium, and the Docker image from this project — see: [3. How to build](Build.md)
+Prerequisites: Node, Docker, and the Docker image from this project — see: [3. How to build](Build.md)
 
 ```shell
 $ cd test
@@ -47,7 +47,7 @@ As for now, autonomous
 tests are run in a GitLab CI
 environment.
 
-See the [.gitlab-ci.yml](../.gitlab-ci.yml) configuration.
+See the [`.gitlab-ci.yml`](../.gitlab-ci.yml) configuration.
 
 
 

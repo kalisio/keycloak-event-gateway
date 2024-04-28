@@ -16,6 +16,10 @@ translated into JSON payloads,
 to HTTP endpoint(s) you
 declare in the configuration.
 
+And if your listening application uses Feathers,
+you may want to have a look at the
+[feathers-keycloak-listener](https://github.com/kalisio/feathers-keycloak-listener) module
+to help you implement an endpoint.
 
 ## This documentation
 
