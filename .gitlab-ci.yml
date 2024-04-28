@@ -40,6 +40,7 @@ docker_push:
     refs:
       - master
   script:
+    - echo "${CI_REGISTRY_PASSWORD}" | docker login -u "${CI_REGISTRY_USER}" --password-stdin registry.gitlab.com
     - docker tag kalisio/keycloak-event-gateway registry.gitlab.com/avcompris/kalisio/keycloak-event-gateway/kalisio/keycloak-event-gateway
     - docker push registry.gitlab.com/avcompris/kalisio/keycloak-event-gateway/kalisio/keycloak-event-gateway
 
