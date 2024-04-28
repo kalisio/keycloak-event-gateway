@@ -40,7 +40,7 @@ docker_push:
     refs:
       - master
   script:
-    - docker tag kalisio/keycloak-event-gateway registry.gitlab.com/kalisio/keycloak-event-gateway/kalisio/keycloak-event-gateway
+    - docker tag kalisio/keycloak-event-gateway registry.gitlab.com/avcompris/kalisio/keycloak-event-gateway/kalisio/keycloak-event-gateway
     - docker push registry.gitlab.com/avcompris/kalisio/keycloak-event-gateway/kalisio/keycloak-event-gateway
 
 mocha:
