@@ -2,7 +2,7 @@ _[Back to the home page](../README.md)
 — Previous page: [3. How to build](./Build.md)
 — Next page: [5. How to test](./Test.md)_
 
---
+---
 
 # 4. How to deploy locally
 
@@ -33,7 +33,7 @@ With a browser, go to [http://localhost:8080](http://localhost:8080)
 $ docker compose down
 ```
 
---
+---
 
 _[Back to the home page](../README.md)
 — Previous page: [3. How to build](./Build.md)

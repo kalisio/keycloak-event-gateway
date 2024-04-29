@@ -1,7 +1,7 @@
 
 _Next Page: [1. Installation and usage](docs/Usage.md)_
 
---
+---
 
 # keycloak-event-gateway
 
@@ -33,7 +33,7 @@ to help you implement an endpoint.
 8. [Known Issues](docs/Known_Issues.md)
 9. [FAQ](docs/FAQ.md)
 
---
+---
 
 _Next Page: [1. Installation and usage](docs/Usage.md)_
 

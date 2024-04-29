@@ -3,7 +3,7 @@ _[Back to the home page](../README.md)
 — Previous page: [6. Examples of JSON payloads](./Examples.md)
 — Next page: [8. Known Issues](./Known_Issues.md)_
 
---
+---
 
 # 7. Troubleshooting
 
@@ -32,7 +32,7 @@ version of Java compatible with your Keycloak runtime.
 
 
 
---
+---
 
 
 _[Back to the home page](../README.md)

@@ -2,7 +2,7 @@ _[Back to the home page](../README.md)
 — Previous page: [keycloak-event-gateway](../README.md)
 — Next page: [2. Configuration](./Configuration.md)_
 
---
+---
 
 # 1. Installation and usage
 
@@ -67,7 +67,7 @@ The data model is Keycloak’s.
 See the [6. Examples of JSON payloads](Examples.md) page for actual cases.
 
 
---
+---
 
 _[Back to the home page](../README.md)
 — Previous page: [keycloak-event-gateway](../README.md)— Next page: [2. Configuration](./Configuration.md)_

@@ -2,7 +2,7 @@ _[Back to the home page](../README.md)
 — Previous page: [4. How to deploy locally](./Deploy.md)
 — Next page: [6. Examples of JSON payloads](./Examples.md)_
 
---
+---
 
 # 5. How to test
 
@@ -51,7 +51,7 @@ See the [`.gitlab-ci.yml`](../.gitlab-ci.yml) configuration.
 
 
 
---
+---
 
 _[Back to the home page](../README.md)
 — Previous page: [4. How to deploy locally](./Deploy.md)

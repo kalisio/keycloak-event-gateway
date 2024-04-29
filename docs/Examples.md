@@ -2,7 +2,7 @@ _[Back to the home page](../README.md)
 — Previous page: [5. How to test](./Test.md)
 — Next page: [7. Troubleshooting](./Troubleshooting.md)_
 
---
+---
 
 # 6. Examples of JSON payloads
 
@@ -205,7 +205,7 @@ e.g. `type = LOGIN `
 }
 ```
 
---
+---
 
 _[Back to the home page](../README.md)
 — Previous page: [5. How to test](./Test.md)

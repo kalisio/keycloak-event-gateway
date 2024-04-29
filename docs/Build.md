@@ -2,7 +2,7 @@ _[Back to the home page](../README.md)
 — Previous page: [2. Configuration](./Configuration.md)
 — Next page: [4. How to deploy locally](./Deploy.md)_
 
---
+---
 
 # 3. How to build
 
@@ -33,7 +33,7 @@ Docker container running Keycloak. See
 the [`docker-compose.yml`](../docker-compose.yml) file
 for an exemple of configuration.
 
---
+---
 
 _[Back to the home page](../README.md)
 — Previous page: [2. Configuration](./Configuration.md)
