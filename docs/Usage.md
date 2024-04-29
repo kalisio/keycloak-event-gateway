@@ -50,7 +50,7 @@ to HTTP/HTTPS endpoints you declare.
 
 
 It will send a
-`Authorization: Bearer <accessToken>` with its
+`Authorization: Bearer <accessToken>` header with its
 requests to the endpoints.
 
 See the [2. Configuration](Configuration.md) page for more details.

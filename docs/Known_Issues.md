@@ -22,7 +22,7 @@ This is not implemented.
 ## No messaging queue
 
 An alternative choice of configuration
-could be to use a 
+could be to use
 a messaging
 queue rather than an HTTP/HTTPS endpoint.
 
@@ -32,7 +32,7 @@ attribute in the configuration
 (see [2. Configuration](Configuration.md)).
 
 The underlying service is not
-implemented though.
+implemented, though.
 
 
 
