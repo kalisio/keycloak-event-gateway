@@ -7,6 +7,8 @@ import javax.annotation.Nullable;
 import org.keycloak.events.admin.OperationType;
 import org.keycloak.events.admin.ResourceType;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 public class AdminEventOutput extends AbstractEventOutput {
 
 	private final AuthDetailsOutput authDetails;
@@ -17,6 +19,8 @@ public class AdminEventOutput extends AbstractEventOutput {
 	private final String error;
 	@Nullable
 	private final String representation;
+	@Nullable
+	private final JsonNode value;
 
 	public AdminEventOutput(
 		final String kcVersion,
@@ -28,7 +32,8 @@ public class AdminEventOutput extends AbstractEventOutput {
 		final ResourceType resourceType,
 		final String resourcePath,
 		@Nullable final String error,
-		@Nullable final String representation
+		@Nullable final String representation,
+		@Nullable final JsonNode value
 	) {
 		super( //
 				kcVersion, //
@@ -43,6 +48,7 @@ public class AdminEventOutput extends AbstractEventOutput {
 		this.resourcePath = checkNotNull(resourcePath, "resourcePath");
 		this.error = error;
 		this.representation = representation;
+		this.value = value;
 	}
 
 	public AuthDetailsOutput getAuthDetails() {
@@ -75,5 +81,11 @@ public class AdminEventOutput extends AbstractEventOutput {
 	public String getRepresentation() {
 
 		return representation;
+	}
+
+	@Nullable
+	public JsonNode getValue() {
+
+		return value;
 	}
 }

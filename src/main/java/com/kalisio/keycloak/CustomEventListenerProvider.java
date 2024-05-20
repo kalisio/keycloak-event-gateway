@@ -22,6 +22,7 @@ import org.keycloak.models.RealmModel;
 import org.keycloak.models.UserModel;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
@@ -118,6 +119,8 @@ public class CustomEventListenerProvider implements EventListenerProvider {
 		final String error = adminEvent.getError();
 		@Nullable
 		final String representation = adminEvent.getRepresentation();
+		@Nullable
+		final JsonNode value = deserializeRepresentation(representation);
 
 		final RealmModel realm = session.realms().getRealm(adminEvent.getRealmId());
 
@@ -145,7 +148,8 @@ public class CustomEventListenerProvider implements EventListenerProvider {
 				resourceType, //
 				resourcePath, //
 				error, //
-				representation);
+				representation, //
+				value);
 
 		send(extractEventContext(adminEvent), adminEventOutput);
 	}
@@ -153,6 +157,27 @@ public class CustomEventListenerProvider implements EventListenerProvider {
 	@Override
 	public void close() {
 
+	}
+
+	@Nullable
+	private final JsonNode deserializeRepresentation(
+		@Nullable final String representation
+	) {
+
+		if (representation == null) {
+			return null;
+		}
+
+		try {
+
+			return new ObjectMapper().readTree(representation);
+
+		} catch (final JsonProcessingException | RuntimeException e) {
+
+			log.error(e);
+
+			return null;
+		}
 	}
 
 	private void send(
