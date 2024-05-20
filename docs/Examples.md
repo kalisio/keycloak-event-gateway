@@ -26,7 +26,7 @@ e.g. `operationType=CREATE`, and
   "time":1714236349308,
   "realmId":"2b1c9854-ba47-4770-93d0-a00f6ef804e5",
   "realmName":"Kalisio",
-  "authDetails" {
+  "authDetails":{
     "ipAddress":"172.20.0.1",
     "realmId":"b3936136-db71-4636-9f07-c294a6b49bc8",
     "realmName":"master",
@@ -39,7 +39,7 @@ e.g. `operationType=CREATE`, and
   "resourceType":"USER",
   "resourcePath":"users/b3692458-57e8-4593-b36b-077d34ee76a4",
   "error":null,
-  "representation":{
+  "value":{
     "username":"petitponey",
     "enabled":true,
     "emailVerified":true,
@@ -48,7 +48,8 @@ e.g. `operationType=CREATE`, and
     "email":"petitponey@gmail.com",
     "requiredActions":[],
     "groups":[]
-  }
+  },
+  "representation":"{\"username\":\"petitponey\",\"enabled\":true,\"emailVerified\":true,\"firstName\":\"\",\"lastName\":\"\",\"email\":\"petitponey@gmail.com\",\"requiredActions\":[],\"groups\":[]}"
 }
 ```
 
@@ -74,7 +75,7 @@ e.g. `operationType=CREATE`, and
   "resourceType":"USER",
   "resourcePath":"users/96352ea3-d876-48f4-99f5-c3a416759a6a",
   "error":null,
-  "representation":{
+  "value":{
     "id":"96352ea3-d876-48f4-99f5-c3a416759a6a",
     "createdTimestamp":1714251368388,
     "username":"petitponey",
@@ -115,7 +116,8 @@ e.g. `operationType=CREATE`, and
       }],
       "groups":[]
     }
-  }
+  },
+  "representation":"{\"id\":\"96352ea3-d876-48f4-99f5-c3a416759a6a\",\"createdTimestamp\":1714251368388,\"username\":\"petitponey\",\"enabled\":true,\"totp\":false,\"emailVerified\":true,\"firstName\":\"\",\"lastName\":\"\",\"email\":\"petiponey1994@gmail.com\",\"attributes\":{},\"disableableCredentialTypes\":[],\"requiredActions\":[],\"notBefore\":0,\"access\":{\"manageGroupMembership\":true,\"view\":true,\"mapRoles\":true,\"impersonate\":true,\"manage\":true},\"userProfileMetadata\":{\"attributes\":[{\"name\":\"username\",\"displayName\":\"username\",\"required\":true,\"readOnly\":true,\"validators\":{}},{\"name\":\"email\",\"displayName\":\"email\",\"required\":true,\"readOnly\":false,\"validators\":{\"email\":{\"ignore.empty.value\":true}}}],\"groups\":[]}}"
 }
 ```
 
@@ -142,6 +144,7 @@ e.g. `operationType=CREATE`, and
   "resourceType":"USER",
   "resourcePath":"users/96352ea3-d876-48f4-99f5-c3a416759a6a",
   "error":null,
+  "value":null,
   "representation":null
 }
 ```
