@@ -8,6 +8,12 @@ _[Back to the home page](../README.md)
 
 As found with Keycloak 22.0.5.
 
+Note that in the case of Admin events, the
+`representation` field, if present, is a String.
+The plugin parses it and creates a
+`value` field with the resulting object.
+
+
 ## `eventClass: AdminEvent`
 
 Admin events
