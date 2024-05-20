@@ -13,6 +13,10 @@ Note that in the case of Admin events, the
 The plugin parses it and creates a
 `value` field with the resulting object.
 
+> If an error occured during the deserialization of
+> the `representation` field, the `value` field will
+> be set to `null`.
+
 
 ## `eventClass: AdminEvent`
 
